@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <composite:interface>
+        <composite:attribute name="id"/>
+        <composite:attribute name="value"/>
+        <composite:attribute name="label"/>
+        <composite:attribute name="columns"/>
+        <composite:attribute name="pattern"/>
+        <composite:attribute name="required" type="java.lang.Boolean"/>
+        <composite:attribute name="floatingLabel" type="java.lang.Boolean"/>
+        <composite:attribute name="icon"/>
+    </composite:interface>
+    <composite:implementation>
+        <ui:param name="messages" value="#{facesContext.getMessageList(cc.attrs.id.concat(':').concat(cc.attrs.id))}"/>
+        <div class="mdl-textfield mdl-js-textfield #{messages.isEmpty() ? '' : 'is-invalid'} #{cc.attrs.floatingLabel ? 'mdl-textfield--floating-label' : ''}">
+            <h:inputText id="#{cc.attrs.id}" styleClass="mdl-textfield__input" required="#{cc.attrs.required}" pt:type="text" value="#{cc.attrs.value}">
+                <f:passThroughAttribute rendered="#{cc.attrs.pattern != null}" name="pattern" value="#{cc.attrs.pattern}"/>
+            </h:inputText>
+            <label class="mdl-textfield__label" for="#{cc.attrs.id}">Text...</label>
+            <span class="mdl-textfield__error"><h:message  for="#{cc.attrs.id.concat(':').concat(cc.attrs.id)}"/></span>
+        </div>
+    </composite:implementation>
+</html>
