@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <composite:interface>
+        <composite:attribute name="id"/>
+        <composite:attribute name="value"/>
+    </composite:interface>
+    <composite:implementation>
+        <h:panelGroup id="#{cc.attrs.id}Container" layout="block">
+            <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="#{cc.attrs.id}:#{cc.attrs.id}">            
+                <h:selectBooleanCheckbox id="#{cc.attrs.id}"
+                             value="#{cc.attrs.value}"
+                             styleClass="mdl-switch__input">
+                </h:selectBooleanCheckbox>
+                <span class="mdl-switch__label"></span>
+            </label>
+        </h:panelGroup>
+    </composite:implementation>
+</html>

@@ -23,7 +23,7 @@
             <h:inputText id="#{cc.attrs.id}" styleClass="mdl-textfield__input" required="#{cc.attrs.required}" pt:type="text" value="#{cc.attrs.value}">
                 <f:passThroughAttribute rendered="#{cc.attrs.pattern != null}" name="pattern" value="#{cc.attrs.pattern}"/>
             </h:inputText>
-            <label class="mdl-textfield__label" for="#{cc.attrs.id}">Text...</label>
+            <label class="mdl-textfield__label" for="#{cc.attrs.id}">#{cc.attrs.label}</label>
             <span class="mdl-textfield__error"><h:message  for="#{cc.attrs.id.concat(':').concat(cc.attrs.id)}"/></span>
         </div>
     </composite:implementation>
