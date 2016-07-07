@@ -27,7 +27,11 @@ public class IndexController implements Serializable {
     public void init() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, 2);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
         data = calendar.getTime();
+        System.out.println("teste00: " + data);
     }
     
     public String getTeste() {
@@ -67,7 +71,8 @@ public class IndexController implements Serializable {
     }
 
     public void setData(Date data) {
-        this.data = data;
+        System.out.println("testeData: " + data);
+        this.data = data; 
     }
 
     public void submit() {

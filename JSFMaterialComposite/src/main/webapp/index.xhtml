@@ -108,13 +108,14 @@
 
                             <cc:checkbox id="checkbox1" value="#{indexController.checkboxTeste}" label="Checkbox Teste"/>
 
+                            <cc:datepicker id="datepicker1" value="#{indexController.data}" mask="dd/MM/yyyy" locale="pt-br"/>
 
                             <h:commandLink value="Submit" 
                                            action="#{indexController.submit()}" 
                                            styleClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
 
 
-                            <div class="mdl-textfield mdl-js-textfield">
+<!--                            <div class="mdl-textfield mdl-js-textfield">
                                 <h:inputText id="test6" 
                                              value="#{indexController.data}" 
                                              converter="dateConverter"
@@ -149,9 +150,9 @@
                                     dialog.toggle();
                                 });
                                 inputText.addEventListener('onOk', function () {
-                                    inputText.value = moment(new Date(dialog.time.toString())).format('DD/MM/YYYY');
+                                    inputText.value = moment(new Date(dialog.time.toString())).utc().format('DD/MM/YYYY');
                                 });
-                            </script>
+                            </script>-->
 
                         </h:form>
 
