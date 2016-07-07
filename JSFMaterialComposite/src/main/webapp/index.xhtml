@@ -115,48 +115,51 @@
                                            styleClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
 
 
-<!--                            <div class="mdl-textfield mdl-js-textfield">
-                                <h:inputText id="test6" 
-                                             value="#{indexController.data}" 
-                                             converter="dateConverter"
-                                             styleClass="mdl-textfield__input">
-                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                </h:inputText>
-                                <label class="mdl-textfield__label" for="test6"></label>
-                            </div>
-
-                            <script type="text/javascript">
-                                var inputText = document.getElementById('test6');
-                                var valueSplit = inputText.value.split("/");
-                                moment.locale('pt-br');
-                                var data;
-                                var dialog;
-                                if (moment.locale() == 'pt-br') {
-                                    dialog = new mdDateTimePicker.default({
-                                        type: 'date',
-                                        init: moment().set({'year': valueSplit[2], 'month': valueSplit[1] - 1, 'date': valueSplit[0]}),
-                                        future: moment()
-                                    });
-
-                                } else {
-                                    dialog = new mdDateTimePicker.default({
-                                        type: 'date',
-                                        init: moment().set({'year': valueSplit[2], 'month': valueSplit[0] - 1, 'date': valueSplit[1]}),
-                                        future: moment()
-                                    });
-                                }
-                                dialog.trigger = inputText;
-                                inputText.addEventListener('click', function () {
-                                    dialog.toggle();
-                                });
-                                inputText.addEventListener('onOk', function () {
-                                    inputText.value = moment(new Date(dialog.time.toString())).utc().format('DD/MM/YYYY');
-                                });
-                            </script>-->
 
                         </h:form>
+                        <div class="mdl-card mdl-shadow--4dp">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text">title Text Goes Here</h2>
+                            </div>
+                            <div class="mdl-card__media">
+                                <img src="photo.jpg" width="220" height="140" border="0" alt="" />
+                                asdasd
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                This text might describe the photo and provide further information, such as where and
+                                when it was taken.
+                            </div>
+                            <div class="mdl-card__actions">
+                                <a href="(URL or function)">Related Action</a>
+                            </div>
+                        </div>
 
-
+                        <button id="show-dialog" type="button" class="mdl-button">Show Dialog</button>
+                        <dialog class="mdl-dialog">
+                            <h4 class="mdl-dialog__title">Allow data collection?</h4>
+                            <div class="mdl-dialog__content">
+                                <p>
+                                    Allowing us to collect data will let us get you the information you want faster.
+                                </p>
+                            </div>
+                            <div class="mdl-dialog__actions">
+                                <button type="button" class="mdl-button">Agree</button>
+                                <button type="button" class="mdl-button close">Disagree</button>
+                            </div>
+                        </dialog>
+                        <script>
+                            var dialog = document.querySelector('dialog');
+                            var showDialogButton = document.querySelector('#show-dialog');
+                            if (!dialog.showModal) {
+                                dialogPolyfill.registerDialog(dialog);
+                            }
+                            showDialogButton.addEventListener('click', function () {
+                                dialog.showModal();
+                            });
+                            dialog.querySelector('.close').addEventListener('click', function () {
+                                dialog.close();
+                            });
+                        </script>
                     </div>
                 </div>
             </main>
