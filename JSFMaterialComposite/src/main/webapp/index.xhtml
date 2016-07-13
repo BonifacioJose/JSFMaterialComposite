@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:cc="http://java.sun.com/jsf/composite/composite"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -29,6 +30,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue-indigo.min.css" />
         <h:outputStylesheet library="css" name="mdDateTimePicker.min.css" />
+        <h:outputStylesheet library="css" name="getmdl-select.min.css" />
     </h:head>  
 
     <h:body> 
@@ -99,7 +101,7 @@
                             <cc:input id="test2" value="" floatingLabel="true"/>
                             <cc:input id="test3" value="" floatingLabel="true" pattern="-?[0-9]*(\.[0-9]+)?"/>
 <!--                            <cc:input id="test4" value="#{indexController.teste}" floatingLabel="true" required="true"/>-->
-                            <cc:input id="test5" value="#{indexController.teste}" floatingLabel="true" />
+                            <cc:input id="test5" value="#{indexController.teste}" label="Teste1" floatingLabel="true" />
 
 
                             <cc:slider id="slider1" value="#{indexController.slider}" min="0" max="100" />
@@ -108,51 +110,60 @@
 
                             <cc:checkbox id="checkbox1" value="#{indexController.checkboxTeste}" label="Checkbox Teste"/>
 
-                            <cc:datepicker id="datepicker1" value="#{indexController.data}" mask="dd/MM/yyyy" locale="pt-br"/>
+                            <cc:datepicker id="datepicker1" floatingLabel="true" label="Datepicker label" value="#{indexController.data}" mask="dd/MM/yyyy" locale="pt-br"/>
 
                             <h:commandLink value="Submit" 
                                            action="#{indexController.submit()}" 
                                            styleClass="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
 
-
-<!--                            <div class="mdl-textfield mdl-js-textfield">
-                                <h:inputText id="test6" 
-                                             value="#{indexController.data}" 
-                                             converter="dateConverter"
-                                             styleClass="mdl-textfield__input">
-                                    <f:convertDateTime pattern="dd/MM/yyyy"/>
-                                </h:inputText>
-                                <label class="mdl-textfield__label" for="test6"></label>
+                            
+                            <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                                <h:selectOneMenu id="myselect" value="#{indexController.select}" styleClass="mdl-selectfield__select">
+                                    <f:selectItem itemLabel="" itemValue=""/>
+                                    <f:selectItem itemLabel="Opção 1" itemValue="1"/>
+                                    <f:selectItem itemLabel="Opção 2" itemValue="2"/>
+                                </h:selectOneMenu>
+                                <label class="mdl-selectfield__label" for="myselect">Choose option</label>
                             </div>
 
-                            <script type="text/javascript">
-                                var inputText = document.getElementById('test6');
-                                var valueSplit = inputText.value.split("/");
-                                moment.locale('pt-br');
-                                var data;
-                                var dialog;
-                                if (moment.locale() == 'pt-br') {
-                                    dialog = new mdDateTimePicker.default({
-                                        type: 'date',
-                                        init: moment().set({'year': valueSplit[2], 'month': valueSplit[1] - 1, 'date': valueSplit[0]}),
-                                        future: moment()
-                                    });
-
-                                } else {
-                                    dialog = new mdDateTimePicker.default({
-                                        type: 'date',
-                                        init: moment().set({'year': valueSplit[2], 'month': valueSplit[0] - 1, 'date': valueSplit[1]}),
-                                        future: moment()
-                                    });
-                                }
-                                dialog.trigger = inputText;
-                                inputText.addEventListener('click', function () {
-                                    dialog.toggle();
-                                });
-                                inputText.addEventListener('onOk', function () {
-                                    inputText.value = moment(new Date(dialog.time.toString())).utc().format('DD/MM/YYYY');
-                                });
-                            </script>-->
+                            <!--                            <div class="mdl-textfield mdl-js-textfield">
+                                                            <h:inputText id="test6" 
+                                                                         value="#{indexController.data}" 
+                                                                         converter="dateConverter"
+                                                                         styleClass="mdl-textfield__input">
+                                                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                                                            </h:inputText>
+                                                            <label class="mdl-textfield__label" for="test6"></label>
+                                                        </div>
+                            
+                                                        <script type="text/javascript">
+                                                            var inputText = document.getElementById('test6');
+                                                            var valueSplit = inputText.value.split("/");
+                                                            moment.locale('pt-br');
+                                                            var data;
+                                                            var dialog;
+                                                            if (moment.locale() == 'pt-br') {
+                                                                dialog = new mdDateTimePicker.default({
+                                                                    type: 'date',
+                                                                    init: moment().set({'year': valueSplit[2], 'month': valueSplit[1] - 1, 'date': valueSplit[0]}),
+                                                                    future: moment()
+                                                                });
+                            
+                                                            } else {
+                                                                dialog = new mdDateTimePicker.default({
+                                                                    type: 'date',
+                                                                    init: moment().set({'year': valueSplit[2], 'month': valueSplit[0] - 1, 'date': valueSplit[1]}),
+                                                                    future: moment()
+                                                                });
+                                                            }
+                                                            dialog.trigger = inputText;
+                                                            inputText.addEventListener('click', function () {
+                                                                dialog.toggle();
+                                                            });
+                                                            inputText.addEventListener('onOk', function () {
+                                                                inputText.value = moment(new Date(dialog.time.toString())).utc().format('DD/MM/YYYY');
+                                                            });
+                                                        </script>-->
 
                         </h:form>
 
@@ -163,5 +174,6 @@
         </div>  
 
         <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+        <script src="js/getmdl-select.min.js"></script>
     </h:body>  
 </html>

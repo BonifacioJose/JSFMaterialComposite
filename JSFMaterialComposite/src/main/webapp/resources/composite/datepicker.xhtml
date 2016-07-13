@@ -12,17 +12,19 @@
         <composite:attribute name="id"/>
         <composite:attribute name="value"/>
         <composite:attribute name="mask"/>
+        <composite:attribute name="label"/>
+        <composite:attribute name="floatingLabel" type="java.lang.Boolean"/>
         <composite:attribute name="locale"/>
     </composite:interface>
     <composite:implementation>
-        <div class="mdl-textfield mdl-js-textfield">
+        <div class="mdl-textfield mdl-js-textfield #{cc.attrs.floatingLabel ? 'mdl-textfield--floating-label' : ''}">
             <h:inputText id="#{cc.attrs.id}" 
                          value="#{cc.attrs.value}" 
                          converter="dateConverter"
                          styleClass="mdl-textfield__input">
                 <f:convertDateTime pattern="#{cc.attrs.mask}"/>
             </h:inputText>
-            <label class="mdl-textfield__label" for="#{cc.attrs.id}:#{cc.attrs.id}"></label>
+            <label class="mdl-textfield__label" for="#{cc.attrs.id}:#{cc.attrs.id}">#{cc.attrs.label}</label>
         </div>
 
         <script type="text/javascript">

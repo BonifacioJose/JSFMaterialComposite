@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -21,6 +19,7 @@ public class IndexController implements Serializable {
     private Integer slider = 0;
     private Boolean switchTeste = false;
     private Boolean checkboxTeste = false;
+    private String select;
     private Date data;
 
     @PostConstruct
@@ -75,11 +74,20 @@ public class IndexController implements Serializable {
         this.data = data; 
     }
 
+    public String getSelect() {
+        return select;
+    }
+
+    public void setSelect(String select) {
+        this.select = select;
+    }
+
     public void submit() {
         System.out.println("slider: " + slider);
         System.out.println("switch: " + switchTeste);
         System.out.println("checkbox: " + checkboxTeste);
         System.out.println("data: " + data);
+        System.out.println("select: " + select);
 //        FacesContext.getCurrentInstance().addMessage("test5:test5", new FacesMessage("mensagem", "bolada"));
 //        System.out.println("teste1: " + FacesContext.getCurrentInstance().getMessageList("test5:test5").get(0).getDetail());
         System.out.println("teste");
